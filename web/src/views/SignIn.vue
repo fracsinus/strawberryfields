@@ -55,6 +55,7 @@ async function signIn({ email, password }) {
         </label>
       </div>
       <button @click="signIn(input)">로그인</button>
+      <button @click="router.push('/register')">회원가입</button>
     </div>
   </main>
 </template>
