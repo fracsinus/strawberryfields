@@ -1,0 +1,29 @@
+name: strawberryfields
+
+services:
+  api:
+    image: sbf-api:latest
+    build: ./api
+    networks:
+      - strawberryfields
+    ports:
+      - "8080:80"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      S3_BUCKET: ${S3_BUCKET}
+      S3_ACCESS_KEY: ${S3_ACCESS_KEY}
+      S3_SECRET: ${S3_SECRET}
+  db:
+    image: sbf-db:latest
+    build: ./db
+    environment:
+      POSTGRES_DB: "sbf"
+      POSTGRES_USER: "sbf"
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - strawberryfields
+
+networks:
+  strawberryfields:
