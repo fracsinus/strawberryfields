@@ -8,6 +8,7 @@ class Config:
     s3_bucket: str
     s3_access_key: str
     s3_secret: str
+    cors_origin: str
     collision_max_retry: int = 3
     access_token_lifetime_seconds: int = 3600
     database_host: str = "db"
@@ -21,6 +22,7 @@ DEFAULT_CONFIG = Config(
     s3_bucket=os.environ["S3_BUCKET"],
     s3_access_key=os.environ["S3_ACCESS_KEY"],
     s3_secret=os.environ["S3_SECRET"],
+    cors_origin=os.environ.get("CORS_ORIGIN") or "*",
 )
 
 # TODO: remote config

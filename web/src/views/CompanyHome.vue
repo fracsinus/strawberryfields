@@ -18,6 +18,10 @@ async function getPitch(companyId, musicId) {
     `${import.meta.env.VITE_API_HOST}/companies/${companyId}/pitch/${musicId}`,
     { headers: { Authorization: `Bearer ${auth.access_token}` } },
   );
+  if (!resp.ok) {
+    window.alert("다운로드 실패");
+    return;
+  }
   const filename = (/filename="(.*)"/.exec(resp.headers.get("Content-Disposition")) || [])[1] || "download";
   const blob = await resp.blob();
   const objectURL = window.URL.createObjectURL(blob);

@@ -2,8 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .routers import router
+from .config import config
 
-origins = ["*"]
+origins = config.cors_origin
 
 app = FastAPI()
 app.add_middleware(

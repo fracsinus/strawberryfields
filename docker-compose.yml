@@ -13,6 +13,7 @@ services:
       S3_BUCKET: ${S3_BUCKET}
       S3_ACCESS_KEY: ${S3_ACCESS_KEY}
       S3_SECRET: ${S3_SECRET}
+      CORS_ORIGIN: ${CORS_ORIGIN}
   db:
     image: sbf-db:latest
     build: ./db
